@@ -15,17 +15,43 @@
     <div class="mainapp-main">
       <!-- 侧边栏 -->
       <ul class="mainapp-sidemenu">
+        <li onclick="push('/')">Home</li>
         <li onclick="push('/react')">React</li>
         <li onclick="push('/vue2')">Vue2</li>
         <li onclick="push('/vue3')">Vue3</li>
       </ul>
+      <main id="mainapp-container" style="display: none;padding: 10px;">
+        <h1>Home</h1>
+        <button onclick="replace()"> 测试replace </button>
+      </main>
       <!-- 子应用  -->
       <main id="subapp-container"></main>
     </div>
   </div>
 
   <script>
-    function push(subapp) { history.pushState(null, subapp, subapp) }
+    window.onload = function(){
+      changeMain(window.location.pathname)
+    }
+    function changeMain(path) {
+      const subDiv = document.getElementById('subapp-container')
+      const mainDiv = document.getElementById('mainapp-container')
+      if(path === '/'){
+        mainDiv.style.display = 'block'
+        subDiv.style.display = 'none'
+      } else {
+        mainDiv.style.display = 'none'
+        subDiv.style.display = 'block'
+      }
+    }
+    function push(subapp) { 
+      changeMain(subapp)
+      history.pushState(null, subapp, subapp) 
+    }
+    function replace () {  
+      changeMain('/vue3')
+      window.history.replaceState(null,'','/vue3');
+    }
   </script>
 </body>
 
