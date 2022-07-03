@@ -35,17 +35,23 @@ if (!window.__POWERED_BY_QIANKUN__) {
 
 
 export async function bootstrap() {
-  console.log('[vue] vue app bootstraped');
+  console.log('[vue2] vue app bootstraped');
 }
 
 export async function mount(props) {
-  console.log('[vue] props from main framework', props);
+  console.log('[vue2] props from main framework', props);
   render(props);
 }
 
-export async function unmount() {
+export async function unmount(props) {
+  const { container } = props
+
+  console.log('[vue2] unmount')
   instance.$destroy();
   instance.$el.innerHTML = '';
   instance = null;
   router = null;
+  if (container) {
+    container.innerHTML = ''
+  }
 }

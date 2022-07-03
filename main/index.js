@@ -9,22 +9,16 @@ import './index.less';
 registerMicroApps(
   [
     {
-      name: 'react',
-      entry: '//localhost:7100', // 子应用的 HTML 入口
+      name: 'app-react-main',
+      entry: 'http://localhost:7100/', // 子应用的 HTML 入口
       container: '#subapp-container',  // 渲染到哪里
       activeRule: '/react', // 路由匹配规则
     },
     {
-      name: 'vue2',
-      entry: '//localhost:7101',
+      name: 'app-vue2-app',
+      entry: 'http://localhost:7101/',
       container: '#subapp-container',
       activeRule: '/vue2',
-    },
-    {
-      name: 'vue3',
-      entry: '//localhost:7105',
-      container: '#subapp-container',
-      activeRule: '/vue3',
     },
   ],
 );

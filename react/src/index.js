@@ -24,8 +24,12 @@ export async function mount(props) {
 }
 
 export async function unmount(props) {
+  console.log('[react16] react app unmount',props);
   const { container } = props;
   ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
+  if (container) {
+    container.innerHTML = ''
+  }
 }
 
 // If you want your app to work offline and load faster, you can change

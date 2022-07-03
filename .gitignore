@@ -13,3 +13,4 @@ es
 lib
 package-lock.json
 .eslintcache
+build/
